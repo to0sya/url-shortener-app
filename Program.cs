@@ -1,7 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using url_shortener.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Configuration.AddJsonFile("appsettings.json", optional: true);
+
+builder.Services.AddDbContext<UrlShortenerDBContext>((serviceProvider, options) =>
+{
+    var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+    options.UseNpgsql(configuration.GetConnectionString("PostgresConnection"));
+});
 
 var app = builder.Build();
 

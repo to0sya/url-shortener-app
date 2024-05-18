@@ -22,15 +22,15 @@ namespace url_shortener.Repositories
             return answer != 0 ? entityEntry.Entity : null;
         }
 
-        public async Task<string> Delete(string url)
+        public async Task<int> Delete(int id)
         {
-            var entity = _context.Set<ShortUrl>().Where(u => u.ShortenedUrl.Equals(url)).SingleOrDefault();
+            var entity = _context.Set<ShortUrl>().Where(u => u.Id == id).SingleOrDefault();
 
-            var entityEntry = _context.Set<ShortUrl>().Remove(entity);
+            _context.Set<ShortUrl>().Remove(entity);
 
             var result = await _context.SaveChangesAsync();
 
-            return result.ToString();
+            return result;
         }
 
         public async Task<ShortUrl> Get(string url)

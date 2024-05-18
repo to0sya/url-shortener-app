@@ -13,19 +13,19 @@ namespace url_shortener.Repositories
         }
 
         
-        public async Task<User> Add(User entity)
+        public Task<User> Add(User entity)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<int> Delete(int id)
+        public Task<int> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<User> Get(int id)
+        public Task<User> Get(int id)
         {
-            return await _context.Set<User>().FindAsync(id);
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<User>> GetAll()

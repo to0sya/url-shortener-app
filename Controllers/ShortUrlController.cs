@@ -27,10 +27,7 @@ namespace url_shortener.Controllers
         [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
-
-            var shortUrls = await _repository.GetAll();
-
-            var result = await _repository.Delete(shortUrls.Where(u => u.Id == id).First().ShortenedUrl);
+            var result = await _repository.Delete(id);
 
             if (result == null)
             {

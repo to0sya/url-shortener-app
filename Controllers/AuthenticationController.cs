@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using url_shortener.Contexts;
 using url_shortener.Models;
+using url_shortener.Repositories;
 
 namespace url_shortener.Controllers
 {
@@ -13,11 +14,11 @@ namespace url_shortener.Controllers
     [Route("/login")]
     public class AuthenticationController : Controller
     {
-        private readonly UrlShortenerDBContext _context;
+        private readonly IRepository<User, int> _repository;
 
-        public AuthenticationController(UrlShortenerDBContext context)
+        public AuthenticationController(IRepository<User, int> repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         [AllowAnonymous]
@@ -45,16 +46,18 @@ namespace url_shortener.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([Bind("Login", "Password")] User user)
         {
-            var userFromDb = await _context.Set<User>().FirstOrDefaultAsync(u => u.Login == user.Login && u.Password == user.Password);
+            var usersFromDb = await _repository.GetAll();
 
-            if (userFromDb != null)
+            var findUser = usersFromDb.FirstOrDefault(u => u.Login == user.Login && u.Password == user.Password);
+
+            if (findUser != null)
             {
 
                 var claims = new List<Claim>
                 {
-                    new(ClaimTypes.Name, userFromDb.Login),
-                    new(ClaimTypes.Role, userFromDb.Role),
-                    new(ClaimTypes.NameIdentifier, userFromDb.Id.ToString())
+                    new(ClaimTypes.Name, findUser.Login),
+                    new(ClaimTypes.Role, findUser.Role),
+                    new(ClaimTypes.NameIdentifier, findUser.Id.ToString())
                 };
 
                 var identity = new ClaimsIdentity(claims, "ApplicationCookie");

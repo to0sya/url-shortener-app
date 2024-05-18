@@ -4,10 +4,10 @@
     {
         Task<IEnumerable<TEntityType>> GetAll();
 
-        Task<TEntityType> Get(TKeyType id);
+        Task<TEntityType> Get(TKeyType param);
 
         Task<TEntityType> Add(TEntityType entity);
 
-        Task<TKeyType> Delete(TKeyType id);
+        Task<int> Delete(int id);
     }
 }

@@ -21,5 +21,5 @@ public class User
     [StringLength(20)]
     public string Role { get; set; } = null!;
     
-    public ICollection<ShortUrl> ShortUrls { get; set; } = null!;
+    public virtual ICollection<ShortUrl> ShortUrls { get; set; } = null!;
 }

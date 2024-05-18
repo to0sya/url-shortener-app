@@ -1,4 +1,47 @@
-﻿@{
-    ViewBag["Title"] = "Login";
+﻿@model User;
+
+@{
+    ViewData["Title"] = "Login";
 }
 
+<section id="login-section" class="d-flex justify-content-center align-items-center">
+    <form class="login-form" asp-action="Login">
+        <h3>
+            Login
+        </h3>
+        <div class="audi-style-input-div">
+            <input id="username" type="text" class="audi-style-input" placeholder="username" asp-for="Login" />
+            <label id="search-label" class="audi-style-label-input" for="username">Username</label>
+            <button type="button" class="clear" aria-label="Clear input">
+                <svg viewBox="0 0 16 16" width="12" height="12">
+                    <path d="M 1 1 L 15 15 M 1 15 L 15 1" fill="none" stroke-width="2" stroke="currentColor" />
+                </svg>
+            </button>
+        </div>
+        <div class="pb-3"></div>
+        <div class="audi-style-input-div">
+            <input id="password" type="password" class="audi-style-input" placeholder="password" asp-for="Password" />
+            <label class="audi-style-label-input" for="password">Password</label>
+            <button type="button" class="clear" aria-label="Clear input">
+                <svg viewBox="0 0 16 16" width="12" height="12">
+                    <path d="M 1 1 L 15 15 M 1 15 L 15 1" fill="none" stroke-width="2" stroke="currentColor" />
+                </svg>
+            </button>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <button class="audi-style-button">
+                Login
+            </button>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (window.location.href.includes("ReturnUrl")) {
+                alert("You should login first.");
+            }
+        })
+    </script>
+}

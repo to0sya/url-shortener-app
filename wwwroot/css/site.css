@@ -1,22 +1,100 @@
-html {
-  font-size: 14px;
+header span {
+    padding: .5rem 1rem;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+main #login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.audi-style-input {
+    font-size: 20px;
+    width: 100%;
+    padding: 8px 0;
+    padding-right: 30px;
+    border: none;
+    color: black;
+    border-bottom: 1px solid #6e6e6e;
+    transition: border-color 250ms;
+    background-color: transparent;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.audi-style-input:hover {
+    color: black;
+    border-bottom: 1px solid black;
 }
 
-body {
-  margin-bottom: 60px;
+.audi-style-input:focus {
+    outline: none;
+    border-bottom: 1.5px solid black;
 }
+
+.audi-style-input::placeholder {
+    color: transparent;
+}
+
+
+
+.audi-style-label-input {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    color: black;
+    pointer-events: none;
+    transform-origin: left center;
+    transition: transform 250ms;
+}
+
+.audi-style-input:focus + .audi-style-label-input,
+.audi-style-input:not(:placeholder-shown) + .audi-style-label-input {
+    transform: translateY(-100%) scale(0.75);
+}
+
+.audi-style-input-div {
+    position: relative;
+    margin-top: 30px;
+    max-width: 400px;
+    font-family: Arial;
+}
+
+.clear {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    top: 30%;
+    right: -7px;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    color: black;
+    transition: color 250ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .clear:hover, .clear:focus {
+        color: #333;
+    }
+
+.audi-style-input:placeholder-shown + .audi-style-label-input + .clear {
+    display: none;
+}
+
+.audi-style-button {
+    margin-top: 1rem;
+    border: none;
+    padding: 8px 32px;
+    gap: 12px;
+    background-color: black;
+    color: white;
+    font-family: Arial;
+}
+
+    .audi-style-button:hover {
+        background-color: #4c4c4c;
+    }

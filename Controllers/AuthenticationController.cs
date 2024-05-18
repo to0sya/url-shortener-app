@@ -63,7 +63,7 @@ namespace url_shortener.Controllers
                 await HttpContext.SignInAsync("ApplicationCookie", principal);
                 return RedirectToAction("Index", "ShortUrl");
             }
-
+            ViewBag.Error = "Invalid login or password";
             return View("Index", user);
         }
 

@@ -11,7 +11,7 @@
         {
             <form asp-action="Edit">
                 <section class="d-flex flex-column">
-                    <textarea asp-for="Text" style="width: 500px;"></textarea>
+                    <textarea asp-for="Text" style="width: 500px; height: 300px;"></textarea>
                     <button class="audi-style-button" type="submit" style="width: 200px;" asp-controller="About" asp-action="Edit">
                         Save changes
                     </button>
@@ -19,7 +19,7 @@
             </form>
         } else
         {
-            <textarea disabled style="width: 500px;">@ViewBag.Text</textarea>
+            <textarea disabled style="width: 500px; height: 300px;">@ViewBag.Text</textarea>
         }
     }
 </section>

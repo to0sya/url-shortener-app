@@ -1,1 +1,4 @@
-Algorithm is simple
+The algorithm uses the MD5 hashing algorithm to create a hash of the input URL.
+The resulting hash is converted into a Base64 string.
+The Base64 string is modified by replacing '+' with '-' and '/' with '_', making it URL-friendly.
+The method takes the first 8 characters of the modified Base64 string to create a short, unique representation of the original URL.

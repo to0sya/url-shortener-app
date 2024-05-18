@@ -1,3 +1,13 @@
-﻿@{
-    ViewBag["Title"] = "Info";
+﻿@model ShortUrl;
+
+@{
+    ViewData["Title"] = "Info";
 }
+
+<section class="info ms-3">
+    <h1>Info</h1>
+    <p><b>Short URL:</b> <a href="@Model.ShortenedUrl">@Model.ShortenedUrl</a></p>
+    <p><b>Original URL:</b> <a href="@Model.OriginalUrl">@Model.OriginalUrl</a></p>
+    <p><b>Created At:</b> @Model.CreationDate</p>
+    <p><b>Creator:</b> @Model.Creator.Login </p>
+</section>

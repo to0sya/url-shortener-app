@@ -24,5 +24,5 @@ public class ShortUrl
     public int CreatedBy { get; set; }
     
     [ForeignKey("CreatedBy")]
-    public User Creator { get; set; } = null!;
+    public virtual User Creator { get; set; } = null!;
 }

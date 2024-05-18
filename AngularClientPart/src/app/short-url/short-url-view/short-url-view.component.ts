@@ -36,7 +36,7 @@ export class ShortUrlViewComponent {
 
   loadShortUrls() {
     this.shortUrlService.GetShortUrl().subscribe(data => {
-      this.shortUrls = data.map((shortUrl: any) => new ShortUrl(shortUrl.id, shortUrl.shortenedUrl, shortUrl.originalUrl, shortUrl.createdBy));
+      this.shortUrls = data.map((shortUrl: any) => new ShortUrl(shortUrl.id, shortUrl.shortenedUrl, shortUrl.originalUrl, shortUrl.createdBy)).sort((a, b) => b.id - a.id);
       console.log(this.shortUrls);
     });
   }

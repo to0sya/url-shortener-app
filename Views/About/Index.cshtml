@@ -1,3 +1,25 @@
-﻿@{
-    ViewBag["Title"] = "About";
+﻿@model About
+
+@{
+    ViewData["Title"] = "About";
+    
 }
+
+<section class="p-5 d-flex justify-content-center align-items-center">
+    @{
+        if (User.IsInRole("Admin"))
+        {
+            <form asp-action="Edit">
+                <section class="d-flex flex-column">
+                    <textarea asp-for="Text" style="width: 500px;"></textarea>
+                    <button class="audi-style-button" type="submit" style="width: 200px;" asp-controller="About" asp-action="Edit">
+                        Save changes
+                    </button>
+                </section>
+            </form>
+        } else
+        {
+            <textarea disabled style="width: 500px;">@ViewBag.Text</textarea>
+        }
+    }
+</section>

@@ -16,7 +16,14 @@ export class ShortUrlServiceService {
   }
 
   AddShortUrl(shortUrl: string, userId: number): any {
-    console.log('Adding short url');
     return this.httpClient.post(`${this.api_route}short-url`, { originalUrl: shortUrl, userId: userId });
+  }
+
+  DeleteShortUrl(id: number): any {
+    return this.httpClient.delete(`${this.api_route}short-url/${id}`);
+  }
+
+  GetShortUrlInfo(id: number): void {
+    window.location.href = `${this.api_route}short-url/${id}`;
   }
 }

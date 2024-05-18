@@ -28,7 +28,6 @@ export class ShortUrlViewComponent {
     this.loadShortUrls();
 
     this.httpClient.get('https://localhost:7165/login/info').subscribe((data: any) => {
-      console.log(data);
       this.role = data['role'];
       this.user_id = data['id'];
     });
@@ -43,7 +42,6 @@ export class ShortUrlViewComponent {
 
   onSubmit(e: Event) {
     e.preventDefault();
-    console.log('Form submitted');
     
     this.shortUrlService.AddShortUrl(this.originalUrl, this.user_id).subscribe((data: any) => {
       if (data['success']) {
@@ -58,8 +56,7 @@ export class ShortUrlViewComponent {
   }
 
   onDelete(id: number) {
-    console.log('Deleting id:', id);
-    this.httpClient.delete(`https://localhost:7165/short-url/${id}`).subscribe((data: any) => {
+    this.shortUrlService.DeleteShortUrl(id).subscribe((data: any) => {
       if (data['success']) {
         alert('Short url deleted successfully.')
         this.loadShortUrls();
@@ -72,7 +69,6 @@ export class ShortUrlViewComponent {
   }
 
   onInfo(id: number) {
-    console.log('Getting info for id:', id);
-    window.location.href = `https://localhost:7165/short-url/${id}` ;
+    this.shortUrlService.GetShortUrlInfo(id);
   }
 }
